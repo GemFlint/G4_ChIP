@@ -1,0 +1,11 @@
+# enter py27 environment where macs2 was able to be downloaded
+# go to anaconda3/bin
+source activate py27
+# (py27) will appear before usual gf21 to the left of the terminal, this means you are in py27 environment and can now run macs2
+
+#peak calling code can be run in terminal and will take about 10 mins
+/rds/general/user/gf21/home/anaconda3/envs/py27/bin/macs2 callpeak  -t /rds/general/project/diantonio/live/Gem/ChIP/PEO1/PEO1_merged_trimmed_reads/PEO1_trimmed/PEO1_alignment/PEO1_alignment_ChIP_3.bl.dedup.sort.bam -c /rds/general/project/diantonio/live/Gem/ChIP/PEO1/PEO1_merged_trimmed_reads/PEO1_trimmed/PEO1_alignment/PEO1_alignment_input_2.bl.dedup.sort.bam -n PEO1_ChIP_3_repeat
+
+# -t is sorted ChIP bam file
+# -c is sorted input bam file 
+# -n is output file prefix 
