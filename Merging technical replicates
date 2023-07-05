@@ -1,0 +1,17 @@
+# merging technical replicates before adaptor trimming 
+
+# code, keep files zipped to make them easier 
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=1:mem=900gb
+
+cat $PBS_O_WORKDIR/PEO4_ChIP_1A_R2.fastq.gz $PBS_O_WORKDIR/PEO4_ChIP_1B_R2.fastq.gz > PEO4_ChIP_1_R2.fastq.gz
+
+cat $PBS_O_WORKDIR/PEO4_ChIP_2A_R1.fastq.gz $PBS_O_WORKDIR/PEO4_ChIP_2B_R1.fastq.gz > PEO4_ChIP_2_R1.fastq.gz
+
+cat $PBS_O_WORKDIR/PEO4_ChIP_2A_R2.fastq.gz $PBS_O_WORKDIR/PEO4_ChIP_2B_R2.fastq.gz > PEO4_ChIP_2_R2.fastq.gz
+
+cat $PBS_O_WORKDIR/PEO4_ChIP_3A_R1.fastq.gz $PBS_O_WORKDIR/PEO4_ChIP_3B_R1.fastq.gz > PEO4_ChIP_3_R1.fastq.gz
+
+cat $PBS_O_WORKDIR/PEO4_ChIP_3A_R2.fastq.gz $PBS_O_WORKDIR/PEO4_ChIP_3B_R2.fastq.gz > PEO4_ChIP_3_R2.fastq.gz
+
+cp * $PBS_O_WORKDIR
