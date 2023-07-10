@@ -26,3 +26,5 @@ samtools index $name.bl.dedup.sort.bam
 rm $name.bam $name.sort.bam $name.dedup.sort.bam
 done
 cp * $PBS_O_WORKDIR
+
+# de-duplication of reads did not work as well so an additional de-duplication job was needed to be submitted
