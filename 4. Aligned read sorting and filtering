@@ -28,3 +28,18 @@ done
 cp * $PBS_O_WORKDIR
 
 # de-duplication of reads did not work as well so an additional de-duplication job was needed to be submitted
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=200:mem=900gb
+module load samtools
+module load bedtools
+module load picard
+for file in $PBS_O_WORKDIR/*.bl.dedup.sort.bam
+do
+name=`basename $file .bl.dedup.sort.bam`
+picard MarkDuplicates REMOVE_DUPLICATES=TRUE I=$PBS_O_WORKDIR/$name.bl.dedup.sort.bam O=$name.dedup2.bl.dedup.sort.bam M=$name.dedup2.metrics.txt
+samtools index $name.dedup2.bl.dedup.sort.bam
+done
+
+cp * $PBS_O_WORKDIR
+
