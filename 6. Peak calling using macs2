@@ -14,3 +14,6 @@ source activate py27
 /rds/general/user/gf21/home/anaconda3/envs/py27/bin/macs2 callpeak  -t /rds/general/project/diantonio/live/Gem/ChIP/PEO1/PEO1_merged_trimmed_reads/PEO1_trimmed/PEO1_alignment_2/PEO1_alignment_ChIP_2.dedup2.bl.dedup.sort.bam -c /rds/general/project/diantonio/live/Gem/ChIP/PEO1/PEO1_merged_trimmed_reads/PEO1_trimmed/PEO1_alignment_2/PEO1_alignment_input_2.dedup2.bl.dedup.sort.bam -n PEO1_ChIP_2_dedup2_ext210 --nomodel --extsize 210
 
 # intersecting peaks- intersecting 3x repeats, peaks will be called if present in 2 or more samples
+module load bedtools
+bedtools intersect -u -a new_hacat_bg4_Rep2.bed -b hacat_bg4_rep1_paper.bed > hacat_shared.bed 
+cat hacat_bg4_Rep1_peaks_JR.bed | sed 's/^/chr/' > new_bg4_rep1.bed
