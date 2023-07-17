@@ -15,5 +15,10 @@ source activate py27
 
 # intersecting peaks- intersecting 3x repeats, peaks will be called if present in 2 or more samples
 module load bedtools
-bedtools intersect -u -a new_hacat_bg4_Rep2.bed -b hacat_bg4_rep1_paper.bed > hacat_shared.bed 
+bedtools intersect -u -a PEO1_ChIP_1_dedup2_peaks.narrowPeak -b PEO1_ChIP_2_dedup2_peaks.narrowPeak -b PEO1_ChIP_3_dedup2.peaks.narrowPeak > PEO1_dedup2_shared_peaks_1v23.narrowPeak
+
+# intersecting peaks, peaks called if in all 3 samples
+module load bedtools
+bedtools intersect -u -a PEO1_ChIP_1_dedup2_peaks.narrowPeak -b PEO1_ChIP_2_dedup2_peaks.narrowPeak > PEO1_dedup2_shared_peaks12.narrowPeak
+bedtools intersect -u -a PEO1_dedup2_shared_peaks12.narrowPeak -b PEO1_ChIP_3_dedup2.peaks.narrowPeak > PEO1_dedup2_shared_peaks123.narrowPeak
 
