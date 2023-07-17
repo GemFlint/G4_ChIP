@@ -16,4 +16,4 @@ source activate py27
 # intersecting peaks- intersecting 3x repeats, peaks will be called if present in 2 or more samples
 module load bedtools
 bedtools intersect -u -a new_hacat_bg4_Rep2.bed -b hacat_bg4_rep1_paper.bed > hacat_shared.bed 
-cat hacat_bg4_Rep1_peaks_JR.bed | sed 's/^/chr/' > new_bg4_rep1.bed
+
