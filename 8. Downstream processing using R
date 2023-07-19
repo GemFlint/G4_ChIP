@@ -1,0 +1,27 @@
+# Install only once, but most load library for each use
+install.packages("BiocManager")
+install.packages("tidyverse")
+BiocManager::install("DiffBind")
+library(DiffBind)
+
+# Make csv file with samples and sample parameters 
+# Enter working directory on R studio -> Session -> Set working directory -> Choose directory -> wherever csv file is located
+
+# run diffbind on sample sheet
+PEO1_PEO4_DE <- dba("Gem_PEO1_PEO4_sample_sheet.csv")
+
+# Save the report
+PEO1_PEO4_DE.DB <- dba.report(PEO1_PEO4_DE)
+
+# Write report to file
+write.csv(PEO1_PEO4_DE.DB, "PEO1_PEO4_DE_report.csv")
+
+# Count if up or down
+sum(PEO1_PEO4_DE.DB$Fold>0)
+sum(PEO1_PEO4_DE.DB$Fold<0)
+
+# Sample cluster
+plot(PEO1_PEO4_DE)
+
+# Volcano plots
+dba.plotVolcano(PEO1_PEO4_DE)
