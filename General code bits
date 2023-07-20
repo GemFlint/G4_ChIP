@@ -17,3 +17,7 @@ cp * $PBS_O_WORKDIR
 # ls to list files in folder 
 # echo to repeat back what you've written 
 # gunzip to unzip a gz file 
+
+# changing file permissions to allow you and others to read write and execute
+chmod -R o+rwx .
+chmod -R u+rwx .
