@@ -1,0 +1,10 @@
+# Checking validity of BAM file
+library(Rsamtools)
+bam_file <- BamFile("PEO1_alignment_ChIP_1.dedup2.bl.dedup.sort.bam")
+tryCatch({
+  header <- scanBamHeader(bam_file)
+  cat("BAM file is valid.\n")
+}, error = function(e) {
+  cat("BAM file is invalid.\n")
+})
+# If invalid, it will say it is
