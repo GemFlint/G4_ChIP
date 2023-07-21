@@ -9,7 +9,7 @@ library(DiffBind)
 # NOTE: may need to alter permissions to rwx for you and others in HPC first to ensure bam files are accessible
 
 # run diffbind on sample sheet
-Gem_PEO1_PEO4_DE <- dba("Gem_PEO1_PEO4_sample_sheet.csv")
+Gem_PEO1_PEO4_DE <- dba.analyze("Gem_PEO1_PEO4_sample_sheet.csv")
 
 # Save the report
 Gem_PEO1_PEO4_DE.DB <- dba.report(Gem_PEO1_PEO4_DE)
