@@ -21,3 +21,6 @@ cp * $PBS_O_WORKDIR
 # changing file permissions to allow you and others to read write and execute
 chmod -R o+rwx .
 chmod -R u+rwx .
+
+# convert narrowPeak to bed file
+awk 'BEGIN {OFS="\t"} {print $1, $2, $3, $4, $5, $6}' input.narrowPeak > output.bed
