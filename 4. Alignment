@@ -22,3 +22,7 @@ read_2="/rds/general/project/diantonio/live/Gem/ChIP/PEO4/PEO4_merged_trimmed_re
 bowtie2 -x /rds/general/project/diantonio/live/tools/genomes/hg38_ucsc/hg38 -1 $read_1 -2 $read_2 -S PEO4_alignment_ChIP_1.sam 2> summary_PEO4_alignment_ChIP_1.txt
 
 cp * $PBS_O_WORKDIR
+
+# for throughput queue (needed in the case of some ChIP files) use following code
+#PBS -lwalltime=30:00:00
+#PBS -lselect=1:ncpus=8:mem=100gb
