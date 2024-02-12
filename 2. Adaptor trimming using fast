@@ -20,3 +20,10 @@ done
 cp * $PBS_O_WORKDIR
 
 # gunzip the files after
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=250:mem=900gb
+
+for file in /rds/general/project/diantonio/live/Gem/ChIP/PEO4/PEO4_merged_trimmed_reads/PEO4_trimmed/*.fastq
+do
+gunzip "$file"
+done
