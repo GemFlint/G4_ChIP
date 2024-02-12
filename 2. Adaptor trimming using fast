@@ -23,10 +23,13 @@ cp * $PBS_O_WORKDIR
 #PBS -lwalltime=08:00:00
 #PBS -lselect=1:ncpus=250:mem=900gb
 
-for file in /rds/general/project/diantonio/live/Gem/ChIP/PEO4/PEO4_merged_trimmed_reads/PEO4_trimmed/*.fastq
+for file in /rds/general/project/diantonio/live/Gem/ChIP/PEO1_repeats/fastq/cat_fastq/ChIP_trimmed/*.gz
 do
 gunzip "$file"
 done
+
+cp * $PBS_O_WORKDIR
+
 
 # optional additional fastQC to check trimming
 #PBS -lwalltime=08:00:00
