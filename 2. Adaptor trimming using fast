@@ -18,3 +18,5 @@ do
 done
 
 cp * $PBS_O_WORKDIR
+
+# gunzip the files after
