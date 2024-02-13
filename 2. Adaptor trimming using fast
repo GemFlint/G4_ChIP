@@ -28,7 +28,6 @@ do
 gunzip "$file"
 done
 
-cp * $PBS_O_WORKDIR
 
 
 # optional additional fastQC to check trimming
