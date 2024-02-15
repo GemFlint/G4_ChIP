@@ -43,3 +43,8 @@ done
 
 cp * $PBS_O_WORKDIR
 
+# Check to see if fully deduplicated, see number of lines (less in deduplicated)
+wc -l file.bam
+
+# additional check- will print only duplicate lines (should be 0 if duplicates removed)
+uniq -d sorted_file.txt
