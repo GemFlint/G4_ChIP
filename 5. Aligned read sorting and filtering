@@ -47,5 +47,5 @@ cp * $PBS_O_WORKDIR
 wc -l file.bam
 
 # using samtools and flags
-# value here should be same value as using a normal word count, as its removing any duplicate reads etc
-samtools view -F 2308 your_sample.bam | wc -l
+# value here should be 0 if no duplicates left
+samtools view your_sample.bam | grep -c '2308\t'
