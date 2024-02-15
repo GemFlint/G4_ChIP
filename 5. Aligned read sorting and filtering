@@ -46,6 +46,6 @@ cp * $PBS_O_WORKDIR
 # Check to see if fully deduplicated, see number of lines (less in deduplicated)
 wc -l file.bam
 
-# using samtools
-samtools flagstat original.bam
-samtools flagstat deduplicated.bam
+# using samtools and flags
+# value here should be same value as using a normal word count, as its removing any duplicate reads etc
+samtools view -F 2308 your_sample.bam | wc -l
