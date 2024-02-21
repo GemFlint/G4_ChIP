@@ -12,4 +12,4 @@ sample <- read.csv("your_csv_file.csv")
 
 # run ChIPQC analysis (anything in "" you can change)
 chipObj <- ChIPQC(sample)
-ChIPQCreport(chipObj, reportName="ChIP QC report: PEO1_4_5_test”, reportFolder=“ChIPQC”)
+ChIPQCreport(chipObj, reportName = "ChIPQC_report_PEO1_4_5_test", reportFolder = "ChIPQC")
