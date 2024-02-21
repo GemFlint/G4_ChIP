@@ -1,1 +1,15 @@
+# Download required packages
+if (!requireNamespace("BiocManager", quietly = TRUE))
++     install.packages("BiocManager")
+ BiocManager::install("ChIPQC")
 
+# enter working directory that all peak files and alignment files and csv file are loacted in e.g) connect to the server through RStudio
+
+# load require packages, and read in your csv table
+library(BiocParallel)
+library(AnnotationDbi)
+sample <- read.csv("your_csv_file.csv")
+
+# run ChIPQC analysis (anything in "" you can change)
+chipObj <- ChIPQC(sample)
+ChIPQCreport(chipObj, reportName="ChIP QC report: PEO1_4_5_test”, reportFolder=“ChIPQC”)
