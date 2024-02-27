@@ -1,7 +1,8 @@
 # convert sam to bam files
 
-#PBS -lwalltime=10:00:00
-#PBS -lselect=1:ncpus=8:mem=100gb
+
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=250:mem=900gb
 module load samtools
 samtools view -b $PBS_O_WORKDIR/file_name.sam > file_name.bam
 samtools view -b $PBS_O_WORKDIR/file_name2.sam > file_name2.bam
@@ -9,8 +10,8 @@ cp * $PBS_O_WORKDIR
 
 # sam to bam, sort and index 
 
-#PBS -lwalltime=10:00:00
-#PBS -lselect=1:ncpus=8:mem=100gb
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=250:mem=900gb
 module load samtools
 for file in $PBS_O_WORKDIR/*.sam
 do
