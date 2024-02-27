@@ -1,1 +1,41 @@
+# convert sam to bam files
+
+#PBS -lwalltime=10:00:00
+#PBS -lselect=1:ncpus=8:mem=100gb
+module load samtools
+samtools view -b $PBS_O_WORKDIR/file_name.sam > file_name.bam
+samtools view -b $PBS_O_WORKDIR/file_name2.sam > file_name2.bam
+cp * $PBS_O_WORKDIR
+
+# sam to bam, sort and index 
+
+#PBS -lwalltime=10:00:00
+#PBS -lselect=1:ncpus=8:mem=100gb
+module load samtools
+for file in $PBS_O_WORKDIR/*.sam
+do
+name=`basename $file .sam`
+samtools view -b $file > $name.bam
+samtools sort -o $name.bam -O 'bam' -T temp_$name $name.sort.bam
+samtools index $name.sort.bam
+done
+cp * $PBS_O_WORKDIR
+
+# including removing mito reads
+#PBS -lwalltime=72:00:00
+#PBS -lselect=1:ncpus=50:mem=100gb
+module load samtools
+module load bedtools
+module load picard
+for file in $PBS_O_WORKDIR/*.sam
+do
+name=`basename $file .sam`
+samtools view -h $file | grep -v chrM | samtools view -h -F 2308 -b -q 10 - > $name.nomito.bam
+samtools sort -o $name.sort.nomito.bam -O 'bam' -T temp_$name $name.nomito.bam
+picard MarkDuplicates quiet=TRUE REMOVE_DUPLICATES=TRUE I=$name.sort.nomito.bam O=$name.dedup.sort.nomito.bam M=$name.metrics.txt
+bedtools intersect -v -abam $name.dedup.sort.nomito.bam -b '/rds/general/project/diantonio/live/tools/blacklisted_regions/hg38-blacklist.v2.bed' > $name.bl.dedup.sort.nomito.bam
+samtools index $name.bl.dedup.sort.nomito.bam
+rm $name.nomito.bam $name.sort.nomito.bam $name.dedup.sort.nomito.bam
+done
+cp * $PBS_O_WORKDIR
 
