@@ -11,7 +11,7 @@ cp * $PBS_O_WORKDIR
 
 # filtering and sorting code 
 #PBS -lwalltime=08:00:00
-#PBS -lselect=1:ncpus=200:mem=900gb
+#PBS -lselect=1:ncpus=250:mem=900gb
 module load samtools
 module load bedtools
 module load picard
