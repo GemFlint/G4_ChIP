@@ -1,4 +1,5 @@
-# Download required packages
+# To assess quality of peak calling 
+#Download required packages
 if (!requireNamespace("BiocManager", quietly = TRUE))
 +     install.packages("BiocManager")
  BiocManager::install("ChIPQC")
