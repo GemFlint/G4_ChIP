@@ -27,7 +27,7 @@ rm $name.bam $name.sort.bam $name.dedup.sort.bam
 done
 cp * $PBS_O_WORKDIR
 
-# de-duplication of reads did not work as well so an additional de-duplication job was needed to be submitted
+# de-duplication of reads did not work as well so an additional de-duplication job was needed to be submitted DONT ALWAYS NEED TO DO- CHECK
 
 #PBS -lwalltime=08:00:00
 #PBS -lselect=1:ncpus=200:mem=900gb
