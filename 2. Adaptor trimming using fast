@@ -1,4 +1,4 @@
-# using fastp to automatically trim PE reads & generate new QC report to confirm correct trimming
+# using fastp to automatically trim PE reads & generate new QC report to confirm correct trimming, duplication rate etc
 
 # download fastp (only needed once)
 module load anaconda3/personal
