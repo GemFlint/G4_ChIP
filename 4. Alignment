@@ -9,7 +9,7 @@ read_2=”path to read 2”
 
 bowtie2 -x pathtorefgenome -1 $read_1 -2 $read_2  -S alignment_input.sam 2> summary_alignment_input.txt
 
-# example code used, might need to use throughput queue instead of short queue
+# example code used, might need to use throughput queue instead of short queue- SEE HOW LARGE THE FILES ARE AND ASSESS WHICH QUEUE IS NEEDED
 #PBS -lwalltime=08:00:00
 #PBS -lselect=1:ncpus=250:mem=900gb
 
