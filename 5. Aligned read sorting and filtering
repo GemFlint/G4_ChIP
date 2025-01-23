@@ -51,3 +51,29 @@ wc -l file.bam
 samtools view your_sample.bam | grep -c '2308\t'
 
 # job to convert .bam to .bigwig files (if required)
+#PBS -lwalltime=08:00:00
+#PBS -lselect=1:ncpus=250:mem=900gb
+
+module load anaconda3/personal
+module load deeptools/2.4.2
+
+source activate deeptools-2.4.2
+
+INPUT_DIR="/rds/general/project/diantonio/live/Gem/GF_JR_genomics_data/h3k27ac_cutandtag_jr_geosub"
+OUTPUT_DIR=“rds/general/project/diantonio/live/Gem/GF_JR_genomics_data/h3k27ac_cutandtag_jr_geosub/bigwig”
+
+mkdir -p $OUTPUT_DIR
+
+for BAM in $INPUT_DIR/*.bam; do
+    BASENAME=$(basename $BAM .bam)
+    OUTPUT="$OUTPUT_DIR/${BASENAME}.bigwig"
+
+    bamCoverage -b $BAM -o $OUTPUT --binSize 10 
+
+    if [ $? -ne 0 ]; then
+        echo "bamCoverage failed for $BAM" >&2
+        continue
+    fi
+done
+
+cp $OUTPUT_DIR/*.bigwig $PBS_O_WORKDIR
