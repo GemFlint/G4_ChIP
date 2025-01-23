@@ -49,3 +49,5 @@ wc -l file.bam
 # using samtools and flags- DONE ON TERMINAL 
 # value here should be 0 if no duplicates left
 samtools view your_sample.bam | grep -c '2308\t'
+
+# job to convert .bam to .bigwig files (if required)
