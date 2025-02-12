@@ -28,6 +28,10 @@ do
 gunzip "$file"
 done
 
+or 
+
+ $PBS_O_WORKDIR/*.gz
+
 
 
 # optional additional fastQC to check trimming
