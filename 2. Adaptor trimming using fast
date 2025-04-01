@@ -41,7 +41,7 @@ or
 
 module load fastqc
 
-for file in $PBS_O_WORKDIR/*.fastq
+for file in $PBS_O_WORKDIR/*.fq
 do
 fastqc $file -d $TMPDIR -o .
 done
