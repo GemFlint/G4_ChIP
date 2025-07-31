@@ -14,7 +14,7 @@ echo "PEO1_Input_1 PEO1_Input_2 PEO1_Input_3 PEO1_ChIP_1 PEO1_ChIP_2 PEO1_ChIP_3
 module load anaconda3/personal
 for name in $(cat $PBS_O_WORKDIR/PEO1.txt)
 do
-/rds/general/user/gf21/home/anaconda3/bin/fastp -i $PBS_O_WORKDIR/$name.R1.fq.gz -I $PBS_O_WORKDIR/$name.R2.fq.gz -o trimmed_$name.R1.fq.gz -O trimmed_$name.R2.fq.gz --detect_adapter_for_pe -l 20 -j $name.fastp.json -h $name.fastp.html
+/rds/general/user/gf21/home/anaconda3/bin/fastp -i $PBS_O_WORKDIR/$name.R1.fastq.gz -I $PBS_O_WORKDIR/$name.R2.fastq.gz -o trimmed_$name.R1.fastq.gz -O trimmed_$name.R2.fastq.gz --detect_adapter_for_pe -l 20 -j $name.fastp.json -h $name.fastp.html
 done
 
 cp * $PBS_O_WORKDIR
